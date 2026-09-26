@@ -1,0 +1,12 @@
+{
+ "note": "Hand-curated sections. The weekly job does not rewrite these; it marks them stale when past their review date so an analyst re-checks them. Update as_of when you revise a section.",
+ "sections": [
+  {"id":"sectors","label":"Front sector narratives (Kostiantynivka, Pokrovsk, Huliaipole, Orikhiv)","as_of":"2026-09-20","stale_after_days":30},
+  {"id":"rate","label":"Rate-of-advance comparison (ISW, DeepState, Russian MoD claims)","as_of":"2026-09-08","stale_after_days":30},
+  {"id":"casualties","label":"Military casualty estimates (CSIS, GCHQ, Mediazona, UALosses)","as_of":"2026-09-15","stale_after_days":45},
+  {"id":"civilians","label":"UN civilian casualty and grid-strike data","as_of":"2026-06-29","stale_after_days":75},
+  {"id":"deepstrike","label":"Ukrainian deep strike and refinery campaign (IEA)","as_of":"2026-09-08","stale_after_days":30},
+  {"id":"talks","label":"Negotiations","as_of":"2026-09-12","stale_after_days":21},
+  {"id":"flank","label":"Eastern flank incident record and NATO posture","as_of":"2026-09-20","stale_after_days":30}
+ ]
+}

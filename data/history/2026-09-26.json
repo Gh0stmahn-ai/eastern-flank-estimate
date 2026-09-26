@@ -1,0 +1,169 @@
+{
+ "generated_utc": "2026-09-26T20:30:57+00:00",
+ "method_version": 1,
+ "sources": {
+  "territory": {
+   "name": "DeepStateMap.live",
+   "url": "https://deepstatemap.live/en",
+   "tier": "independent OSINT (Ukrainian project)",
+   "licence_note": "Derived statistics and a generalised trace only; the raw API feed is not republished. Textual entries reused with attribution and link, as the licence permits."
+  },
+  "losses_claim": {
+   "name": "Ukrainian General Staff, via russianwarship.rip mirror",
+   "url": "https://russianwarship.rip",
+   "tier": "belligerent claim"
+  }
+ },
+ "losses_claim": {
+  "as_of": "2026-09-26",
+  "tier": "belligerent claim",
+  "personnel_total": 1527280,
+  "personnel_week": 10850,
+  "personnel_prior_week": 11050,
+  "uav_week": 9888,
+  "artillery_week": 360,
+  "source_post": "https://www.facebook.com/GeneralStaff.ua/posts/pfbid08STYroeBHWc6pKqttPGGwbN3Ak6enrcLGrrh3zWfy47jb2aNUUc2QTeqyJbmwcEKl"
+ },
+ "curated": [
+  {
+   "id": "sectors",
+   "label": "Front sector narratives (Kostiantynivka, Pokrovsk, Huliaipole, Orikhiv)",
+   "as_of": "2026-09-20",
+   "stale_after_days": 30,
+   "age_days": 6,
+   "status": "current"
+  },
+  {
+   "id": "rate",
+   "label": "Rate-of-advance comparison (ISW, DeepState, Russian MoD claims)",
+   "as_of": "2026-09-08",
+   "stale_after_days": 30,
+   "age_days": 18,
+   "status": "current"
+  },
+  {
+   "id": "casualties",
+   "label": "Military casualty estimates (CSIS, GCHQ, Mediazona, UALosses)",
+   "as_of": "2026-09-15",
+   "stale_after_days": 45,
+   "age_days": 11,
+   "status": "current"
+  },
+  {
+   "id": "civilians",
+   "label": "UN civilian casualty and grid-strike data",
+   "as_of": "2026-06-29",
+   "stale_after_days": 75,
+   "age_days": 89,
+   "status": "stale"
+  },
+  {
+   "id": "deepstrike",
+   "label": "Ukrainian deep strike and refinery campaign (IEA)",
+   "as_of": "2026-09-08",
+   "stale_after_days": 30,
+   "age_days": 18,
+   "status": "current"
+  },
+  {
+   "id": "talks",
+   "label": "Negotiations",
+   "as_of": "2026-09-12",
+   "stale_after_days": 21,
+   "age_days": 14,
+   "status": "current"
+  },
+  {
+   "id": "flank",
+   "label": "Eastern flank incident record and NATO posture",
+   "as_of": "2026-09-20",
+   "stale_after_days": 30,
+   "age_days": 6,
+   "status": "current"
+  }
+ ],
+ "summary": [
+  "Russian-controlled territory shrank by 13 km² between 2026-09-18 and 2026-09-25, to 117,119 km² (19.4% of Ukraine). Source: DeepState geometry, independently measured here.",
+  "Contested or unconfirmed-status ground stands at 1,665 km² (-15 km² on the week).",
+  "The source logged 6 changes: 3 Russian advances or occupations, 3 Ukrainian recaptures or clearances, 0 other.",
+  "Ukraine's General Staff claims 10,850 Russian personnel losses this week, down from 11,050 the week before. This is a belligerent's figure, shown for trend only.",
+  "1 hand-curated section is past its review date and should be re-checked by an analyst."
+ ],
+ "flags": [],
+ "territory": {
+  "as_of": "2026-09-25",
+  "compared_to": "2026-09-18",
+  "occupied_km2": 117119,
+  "occupied_prev_km2": 117132,
+  "delta_km2": -13,
+  "occupied_pct": 19.4,
+  "contested_km2": 1665,
+  "contested_delta_km2": -15,
+  "excluded_layers": {
+   "Transnistria": 1,
+   "Occupied Tskhinvali district": 1,
+   "East Prussia is temporarily occupied.": 1,
+   "Occupied Abkhazia.": 1,
+   "The temporarily occupied territory of Karelia.": 1,
+   "The temporarily occupied territory of the Republic of Ichker": 1,
+   "Liberated (dated layers)": 53,
+   "Snake Island": 1,
+   "Occupied Petsamo": 1,
+   "Occupied Salla": 1,
+   "occupied Estonia territories.": 1,
+   "Occupied Pechorsky district (Saaste Boot).": 1,
+   "Occupied Latvia territories.": 1,
+   "Occupied Southern Kuril islands.": 1
+  },
+  "changelog": [
+   {
+    "date": "2026-09-20",
+    "text": "The Ukrainian Armed Forces liberated Shandryholove and Derylove and advanced near Shandryholove.",
+    "kind": "ukrainian_gain",
+    "lang": "en",
+    "link": "https://deepstatemap.live/en#dl!city!dsm:l:5909"
+   },
+   {
+    "date": "2026-09-21",
+    "text": "The Ukrainian Armed Forces have regained control of the area near Zapadne.",
+    "kind": "ukrainian_gain",
+    "lang": "en",
+    "link": "https://deepstatemap.live/en#14/49.8104063/37.6310059"
+   },
+   {
+    "date": "2026-09-22",
+    "text": "The enemy occupied Markove and advanced near Fedorivka.",
+    "kind": "russian_gain",
+    "lang": "en",
+    "link": "https://deepstatemap.live/en#dl!city!dsm:l:5847"
+   },
+   {
+    "date": "2026-09-23",
+    "text": "The Defense Forces of Ukraine cleared positions in the vicinity of Toretske.",
+    "kind": "ukrainian_gain",
+    "lang": "en",
+    "link": "https://deepstatemap.live/en#14/48.5258176/37.3679363"
+   },
+   {
+    "date": "2026-09-24",
+    "text": "The enemy has occupied Novooleksandrivka and has also advanced near Yurkivka and Vasylivka.",
+    "kind": "russian_gain",
+    "lang": "en",
+    "link": "https://deepstatemap.live/en#dl!city!dsm:l:6185"
+   },
+   {
+    "date": "2026-09-25",
+    "text": "The enemy has advanced near Kalenyky.",
+    "kind": "russian_gain",
+    "lang": "en",
+    "link": "https://deepstatemap.live/en#14/48.8182792/37.9006011"
+   }
+  ],
+  "changelog_counts": {
+   "russian_gain": 3,
+   "ukrainian_gain": 3,
+   "mixed": 0,
+   "other": 0
+  }
+ }
+}
