@@ -1,0 +1,31 @@
+name: One-time bootstrap
+
+on:
+  push:
+    paths: [".github/workflows/bootstrap.yml"]
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  bootstrap:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch archive and verify its SHA-256 fingerprint
+        run: |
+          curl -fsSL "https://litter.catbox.moe/87rsux.gz" -o site.tgz
+          echo "b1c0cac7bd8d726c94e68033574ddb15869c877e3fc95fbbeea9151105e17a0b  site.tgz" | sha256sum -c -
+          tar -xzf site.tgz
+          rm site.tgz
+          ls -la
+
+      - name: Commit site, data and pipeline
+        run: |
+          git config user.name  "weekly-osint-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A -- . ':!.github'
+          git commit -m "Add site, data and pipeline" || echo "Nothing to commit"
+          git push
