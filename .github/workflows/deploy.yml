@@ -1,0 +1,57 @@
+name: Deploy update (verified archive)
+
+# Pulls a site archive, refuses it unless its SHA-256 fingerprint matches exactly,
+# then updates code and curated files. Data the bots maintain is never overwritten;
+# it is only seeded when missing.
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: "HTTPS URL of the site archive (.tar.gz)"
+        required: true
+      sha256:
+        description: "Expected SHA-256 of the archive"
+        required: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: data-writes
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch, verify and unpack
+        env:
+          URL: ${{ github.event.inputs.url }}
+          SHA: ${{ github.event.inputs.sha256 }}
+        run: |
+          [[ "$URL" =~ ^https:// ]] || { echo "URL must be https"; exit 1; }
+          [[ "$SHA" =~ ^[0-9a-f]{64}$ ]] || { echo "sha256 must be 64 hex characters"; exit 1; }
+          curl -fsSL "$URL" -o /tmp/site.tgz
+          echo "$SHA  /tmp/site.tgz" | sha256sum -c -
+          mkdir -p /tmp/site && tar -xzf /tmp/site.tgz -C /tmp/site
+          BOT="--exclude=.github/ --exclude=CHANGELOG.md --exclude=data/latest.json --exclude=data/history_index.json \
+               --exclude=data/history/ --exclude=data/narratives/archive/ --exclude=data/narratives/approved.json \
+               --exclude=data/narratives/rejected.json --exclude=data/narratives/pending.json \
+               --exclude=data/narratives/summary.json --exclude=data/narratives/collect_status.json \
+               --exclude=data/narratives/review_issue.md --exclude=data/gray/economy.json --exclude=data/gray/oryx.json \
+               --exclude=data/gray/fleet.json --exclude=data/gray/reports_pending.json --exclude=data/gray/reports_approved.json \
+               --exclude=data/gray/reports_seen.json --exclude=data/gray/reports_status.json --exclude=data/gray/weekly_status.json \
+               --exclude=data/gray/review_section.md"
+          rsync -a $BOT /tmp/site/ ./
+          rsync -a --ignore-existing --exclude=.github/ /tmp/site/ ./
+      - name: Commit
+        run: |
+          git config user.name  "weekly-osint-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A -- . ':!.github'
+          if git diff --cached --quiet; then echo "Nothing to deploy."; exit 0; fi
+          git commit -m "Deploy update (verified archive)"
+          git pull --rebase
+          git push
