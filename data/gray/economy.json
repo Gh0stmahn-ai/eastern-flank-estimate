@@ -1,0 +1,16 @@
+{
+ "series": [
+  {
+   "date": "2026-09-29",
+   "USD": 84.4075,
+   "EUR": 96.2499,
+   "CNY": 12.5629,
+   "cbr_date": "2026-09-29",
+   "key_rate": 14.0,
+   "key_rate_date": "2026-09-28"
+  }
+ ],
+ "source": "Central Bank of Russia",
+ "errors": [],
+ "updated_utc": "2026-09-29T01:46:16+00:00"
+}

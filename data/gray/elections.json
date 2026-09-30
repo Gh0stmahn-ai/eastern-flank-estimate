@@ -1,0 +1,12 @@
+{
+ "as_of": "2026-09-29",
+ "note": "Elections with documented Russian interference or influence activity. Each entry names who made the finding. Upcoming elections are listed so the timeline shows where to look next.",
+ "elections": [
+  {"date":"2024-10-20","place":"Moldova","what":"Presidential election and EU referendum","finding":"Moldovan police described a large vote-buying scheme run through the network of fugitive oligarch Ilan Shor.","by":"Moldovan authorities","lon":28.86,"lat":47.01,"status":"documented"},
+  {"date":"2024-11-24","place":"Romania","what":"Presidential election, first round","finding":"Annulled by the Constitutional Court on 6 December 2024 after declassified intelligence described a coordinated online campaign for Călin Georgescu with indicators of state backing.","by":"Romanian Constitutional Court; Romanian intelligence","lon":26.1,"lat":44.43,"status":"documented"},
+  {"date":"2025-02-23","place":"Germany","what":"Federal election","finding":"A fake video of AfD ballots being destroyed was attributed to Storm-1516.","by":"German security services","lon":13.4,"lat":52.52,"status":"documented"},
+  {"date":"2026-09-06","place":"Saxony-Anhalt, Germany","what":"State election","finding":"A fake video purporting to show postal votes for the AfD being invalidated was attributed to Storm-1516.","by":"German authorities","lon":11.63,"lat":52.13,"status":"documented"},
+  {"date":"2026-10-03","place":"Latvia","what":"Saeima election","finding":"Latvia's State Security Service named the 2026 election as a Russian influence target in its annual report.","by":"Latvian State Security Service (SAB), January 2026","lon":24.11,"lat":56.95,"status":"upcoming"},
+  {"date":"2026-11-03","place":"United States","what":"Midterm elections","finding":"US intelligence assessed a Kremlin-authorised campaign using AI celebrity deepfakes; researchers attributed the videos to Matryoshka.","by":"US intelligence (reported by The New York Times); Graphika","lon":-77.04,"lat":38.9,"status":"upcoming"}
+ ]
+}
