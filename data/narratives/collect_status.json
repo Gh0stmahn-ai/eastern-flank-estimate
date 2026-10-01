@@ -1,6 +1,8 @@
 {
- "last_collect_utc": "2026-09-30T22:14:57+00:00",
- "added": 100,
- "errors": [],
- "error_count": 0
+ "last_collect_utc": "2026-10-01T05:52:35+00:00",
+ "added": 5,
+ "errors": [
+  "tass_en: https://tass.com/rss/v2.xml: HTTPSConnectionPool(host='tass.com', port=443): Max retries exceeded with url: /rss/v2.xml (Caused by ConnectTimeoutError(<HTTPSCon"
+ ],
+ "error_count": 1
 }
