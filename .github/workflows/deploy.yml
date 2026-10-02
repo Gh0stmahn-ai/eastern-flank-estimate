@@ -26,6 +26,8 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main        # start from the newest commit, not the one current when the job was queued
       - name: Fetch, verify and unpack
         env:
           URL: ${{ github.event.inputs.url }}
