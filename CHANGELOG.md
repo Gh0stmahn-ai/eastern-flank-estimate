@@ -2,6 +2,14 @@
 
 Generated automatically each week. Figures are derived; see README for method and source tiers.
 
+## 2026-10-02
+
+- Russian-controlled territory grew by 5 km² between 2026-09-24 and 2026-10-01, to 117,109 km² (19.4% of Ukraine). Source: DeepState geometry, independently measured here.
+- Contested or unconfirmed-status ground stands at 1,665 km² (-6 km² on the week).
+- The source logged 7 changes: 5 Russian advances or occupations, 1 Ukrainian recaptures or clearances, 1 other.
+- Ukraine's General Staff claims 11,820 Russian personnel losses this week, up from 10,660 the week before. This is a belligerent's figure, shown for trend only.
+- 1 hand-curated section is past its review date and should be re-checked by an analyst.
+
 ## 2026-09-28
 
 - Russian-controlled territory shrank by 18 km² between 2026-09-20 and 2026-09-27, to 117,089 km² (19.4% of Ukraine). Source: DeepState geometry, independently measured here.
