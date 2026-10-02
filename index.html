@@ -530,6 +530,21 @@ code{font-size:12.5px;color:#DCE5EA;background:rgba(255,255,255,.05);padding:0 4
 svg.spk{width:120px;height:28px;flex:none}
 .sparkrow{display:flex;align-items:center;justify-content:space-between;gap:10px;font-family:var(--cond);font-size:12.5px;color:var(--txt-faint);margin:6px 0 2px}
 
+
+#statusBtn{display:inline-flex;align-items:center;gap:7px}
+#statusBtn .sdot{width:8px;height:8px;border-radius:50%;background:var(--ok);flex:none}
+#statusBtn.status-warn .sdot{background:var(--signal)}
+#statusBtn.status-bad .sdot{background:var(--confirmed);box-shadow:0 0 0 3px rgba(208,86,63,.22)}
+#statusBtn.status-bad{border-color:rgba(208,86,63,.6);color:#F0B4A6}
+#statusModal{position:fixed;inset:0;background:rgba(6,14,20,.9);z-index:125;display:none;align-items:center;justify-content:center;padding:26px;overflow-y:auto}
+#statusModal.on{display:flex}
+.statusbox h2{font-size:25px;margin-bottom:10px}
+.pulled{font-family:var(--cond);font-size:12.5px;color:var(--txt-faint);border:1px solid var(--rule);
+  padding:6px 9px;margin:0 0 14px;line-height:1.55;background:rgba(9,22,31,.5)}
+.pulled .pd{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px;background:var(--ok);vertical-align:1px}
+.pulled .pd.late,.pulled .pd.missing{background:var(--confirmed)} .pulled .pd.issue{background:var(--signal)}
+@media (max-width:820px){ #statusBtn .stxt{display:none} #statusBtn{padding:5px 9px} }
+
 /* scrollbars */
 #panel::-webkit-scrollbar,#card::-webkit-scrollbar,#aboutbox::-webkit-scrollbar{width:9px}
 #panel::-webkit-scrollbar-thumb,#card::-webkit-scrollbar-thumb,#aboutbox::-webkit-scrollbar-thumb{background:var(--rule-2)}
@@ -587,7 +602,7 @@ svg.spk{width:120px;height:28px;flex:none}
       <button id="mGuided" aria-pressed="true">Guided tour</button>
       <button id="mExplore" aria-pressed="false">Explore</button>
     </div>
-    <button class="iconbtn" id="liveBadge" title="What changed this week">War data</button>
+    <button class="iconbtn status-ok" id="statusBtn" title="Data status"><span class="sdot"></span><span class="stxt">Data status</span></button>
     <button class="iconbtn" id="tocBtn">Contents</button>
     <button class="iconbtn" id="aboutBtn">Sources</button>
   </header>
@@ -690,6 +705,12 @@ svg.spk{width:120px;height:28px;flex:none}
     <button class="closeb" id="tocClose">Close</button>
   </div>
   <div id="tocbody"></div>
+</div></div>
+
+<div id="statusModal"><div id="aboutbox" class="statusbox">
+  <h2>Data status</h2>
+  <div id="statusBody"></div>
+  <button class="closeb" id="statusClose">Close</button>
 </div></div>
 
 <div id="about"><div id="aboutbox">
@@ -2077,6 +2098,7 @@ async function loadLive(){
     try{ const h=await fetch('data/history_index.json?v='+Date.now(),{cache:'no-store'}); if(h.ok) LIVE_HIST=await h.json(); }catch(e){}
   }catch(e){ LIVE_ERR=String(e.message||e); }
   applyLive();
+  if(typeof renderStatusPill==='function') renderStatusPill();
 }
 
 function applyLive(){
@@ -2290,6 +2312,7 @@ async function loadNarr(){
     NARR=await r.json();
   }catch(e){ NARR_ERR=String(e.message||e); }
   if(mode==='guided' && CH[step] && /^narr|^framing|^grading/.test(CH[step].mode||'')) goto(step,false,true);
+  if(typeof renderStatusPill==='function') renderStatusPill();
 }
 function narrMissing(w){
   w.innerHTML=`<div class="note warn"><span class="lab">Narrative data not loaded</span>${NARR_ERR?esc(NARR_ERR)+'. ':''}This section reads a weekly data file and needs the site to be opened through its web address.</div>`;
@@ -2530,6 +2553,88 @@ function renderFreshness(){
     return `<div class="row"><div class="k"><span class="chip ${st[1]}">${st[0]}</span></div><div class="v"><b>${n}</b><br>${c} &middot; last updated ${t?esc(String(t).replace('T',' ').slice(0,16))+' UTC':'never'}</div></div>`;}).join('')+`</div>
    <p class="attr">Hand-curated sections (sector narratives, casualty estimates, incident framings, the operations registry) are not on a timer because they need analyst judgement; they are flagged "Review due" in the weekly war page when they age out.</p>`;
 }
+
+/* ============ DATA STATUS: when every dataset was pulled, and whether it is on schedule ============ */
+let COLLECT=null;
+async function loadCollectStatus(){
+  try{ const r=await fetch('data/narratives/collect_status.json?v='+Date.now(),{cache:'no-store'}); if(r.ok) COLLECT=await r.json(); }catch(e){}
+  renderStatusPill();
+}
+function ago(iso){
+  if(!iso) return 'never';
+  const s=(Date.now()-Date.parse(iso))/1000;
+  if(s<90) return 'just now';
+  if(s<3600) return Math.round(s/60)+' min ago';
+  if(s<86400*2) return Math.round(s/3600)+' h ago';
+  return Math.round(s/86400)+' days ago';
+}
+function utcStamp(iso){ return iso?String(iso).replace('T',' ').slice(0,16)+' UTC':'never'; }
+/* next scheduled run, from each workflow's timetable (UTC) */
+function nextRun(kind){
+  const n=new Date(), d=new Date(Date.UTC(n.getUTCFullYear(),n.getUTCMonth(),n.getUTCDate()));
+  if(kind==='6h'){ for(let h=0;h<=30;h+=6){ const t=new Date(d.getTime()+(h*60+17)*60000); if(t>n) return t; } }
+  if(kind==='daily'){ let t=new Date(d.getTime()+(5*60+30)*60000); if(t<=n) t=new Date(t.getTime()+86400000); return t; }
+  if(kind==='weekly'){ let t=new Date(d.getTime()+6*3600000); const add=(8-t.getUTCDay())%7; t=new Date(t.getTime()+add*86400000); if(t<=n) t=new Date(t.getTime()+7*86400000); return t; }
+  return null;
+}
+function untilText(t){ if(!t) return ''; const h=(t-Date.now())/3600000; return h<1?'in under an hour':h<48?'in about '+Math.round(h)+' h':'in '+Math.round(h/24)+' days'; }
+function datasets(){
+  const G=typeof GRAY!=='undefined'?GRAY:{};
+  const issues=x=>x&&((x.errors||[]).length||x.flag)?((x.errors||[]).join('; ')||x.flag):'';
+  return [
+    {key:'territory',name:'Ukraine territory and front line',src:'DeepStateMap.live',kind:'weekly',lateH:8*24+6,t:LIVE&&LIVE.generated_utc,issue:LIVE&&(LIVE.flags||[]).map(f=>f.text).join('; ')},
+    {key:'statements',name:'Official Russian statements',src:'Kremlin, Foreign Ministry, TASS',kind:'6h',lateH:13,t:(COLLECT&&COLLECT.last_collect_utc)||(NARR&&NARR.collect_status&&NARR.collect_status.last_collect_utc),issue:COLLECT&&COLLECT.error_count?COLLECT.error_count+' fetch error(s) on the last run':''},
+    {key:'narratives',name:'Narrative analysis and review queue',src:'Computed from the statements',kind:'weekly',lateH:8*24+6,t:NARR&&NARR.generated_utc,issue:''},
+    {key:'cbr',name:'Central Bank of Russia rates',src:'Central Bank of Russia',kind:'daily',lateH:50,t:G.economy&&G.economy.updated_utc,issue:issues(G.economy)},
+    {key:'oryx',name:'Confirmed equipment losses',src:'Oryx',kind:'weekly',lateH:8*24+6,t:G.oryx&&G.oryx.updated_utc,issue:issues(G.oryx)},
+    {key:'fleet',name:'Sanctioned vessels',src:'OpenSanctions',kind:'weekly',lateH:8*24+6,t:G.fleet&&G.fleet.updated_utc,issue:issues(G.fleet)},
+    {key:'reports',name:'Influence-operation reporting monitor',src:'Seven research and platform publishers',kind:'weekly',lateH:8*24+6,t:G.reports_status&&G.reports_status.updated_utc,issue:issues(G.reports_status)}
+  ].map(d=>{
+    const age=d.t?(Date.now()-Date.parse(d.t))/3600000:null;
+    d.state=!d.t?'missing':(age>d.lateH?'late':(d.issue?'issue':'ok'));
+    d.cad={'6h':'Every 6 hours','daily':'Daily, 05:30 UTC','weekly':'Weekly, Mondays 06:00 UTC'}[d.kind];
+    return d;
+  });
+}
+const STATE={ok:['Current','posture'],issue:['Current, with warnings','analyst'],late:['Late','official'],missing:['Not loaded','official']};
+function renderStatusPill(){
+  const b=document.getElementById('statusBtn'); if(!b) return;
+  const ds=datasets(); const bad=ds.filter(d=>d.state==='late'||d.state==='missing').length, warn=ds.filter(d=>d.state==='issue').length;
+  const cls=bad?'bad':(warn?'warn':'ok');
+  const newest=ds.map(d=>d.t).filter(Boolean).sort().pop();
+  b.className='iconbtn status-'+cls;
+  b.querySelector('.stxt').textContent=bad?(bad+' dataset'+(bad>1?'s':'')+' late'):('Data pulled '+ago(newest));
+  b.title=bad?'Some data is overdue; open for details':(warn?'All data current, with warnings':'All data current');
+}
+function renderStatusPanel(){
+  const w=document.getElementById('statusBody'); if(!w) return;
+  const ds=datasets();
+  const wk=CH.findIndex(c=>c.mode==='week');
+  w.innerHTML=`<p class="body" style="margin:0 0 10px">Every automated dataset, when it was last pulled, and when it is next due. Times are in UTC. A dataset is marked late when it has missed its schedule by a clear margin, which usually means a source blocked the request or changed its format; the last good data stays on screen until the next successful pull.</p>
+  <div class="rows">`+ds.map(d=>`<div class="row"><div class="k" style="width:118px"><span class="chip ${STATE[d.state][1]}">${STATE[d.state][0]}</span></div>
+    <div class="v"><b>${esc(d.name)}</b> <span style="color:var(--txt-faint)">&middot; ${esc(d.src)}</span><br>
+    Pulled ${ago(d.t)} <span style="color:var(--txt-faint)">(${utcStamp(d.t)})</span> &middot; ${d.cad} &middot; next ${untilText(nextRun(d.kind))}
+    ${d.issue?`<br><span style="color:var(--signal)">${esc(d.issue).slice(0,260)}</span>`:''}</div></div>`).join('')+`</div>
+  <p class="attr">Hand-curated sections, such as sector narratives, casualty estimates, incident framings and the operations registry, need analyst judgement and are not on a timer; the weekly page flags them when they are due for review.</p>
+  ${wk>=0?`<button class="closeb" data-goto="${wk}" style="margin-top:12px">What changed this week</button>`:''}`;
+}
+/* "pulled X ago" stamp at the top of every chapter that shows live data */
+const MODE_DATA={week:['territory'],narrsrc:['statements'],narrthemes:['statements','narratives'],narrhome:['statements','narratives'],
+  narrquotes:['narratives'],losses:['oryx','cbr'],fleet:['fleet'],ops:['reports']};
+function stampChapter(){
+  const c=CH[step]; if(mode!=='guided'||!c) return;
+  const keys=MODE_DATA[c.mode]||(c.war?['territory']:null); if(!keys) return;
+  const host=document.getElementById('bodywrap'); if(!host) return;
+  const old=host.querySelector('.pulled'); if(old) old.remove();
+  const ds=datasets().filter(d=>keys.includes(d.key));
+  const div=document.createElement('div'); div.className='pulled';
+  div.innerHTML=ds.map(d=>`<span class="pd ${d.state}"></span>${esc(d.name)}: pulled ${ago(d.t)} &middot; ${d.cad}`).join('<br>');
+  host.prepend(div);
+}
+document.getElementById('statusBtn').onclick=()=>{ renderStatusPanel(); document.getElementById('statusModal').classList.add('on'); };
+document.getElementById('statusClose').onclick=()=>document.getElementById('statusModal').classList.remove('on');
+document.getElementById('statusModal').onclick=e=>{ if(e.target.id==='statusModal') e.target.classList.remove('on'); };
+setInterval(()=>{ renderStatusPill(); stampChapter(); },60000);
 
 /* ============ PROJECTION (Lambert conformal conic, matched to the baked paths) ============ */
 const PRJ = (()=>{
@@ -2949,6 +3054,7 @@ function goto(i,fly=true,quiet=false){
   if(typeof renderWeek==='function'){ renderWeek(); applyLiveFigures(); }
   renderNarrSrc(); renderNarrThemes(); renderNarrHome(); renderFraming(); renderNarrQuotes(); renderGrading();
   renderLosses(); renderFleet(); renderOps(); renderElections();
+  if(typeof stampChapter==='function'){ stampChapter(); renderStatusPill(); }
   schedulePlaces();
   showEvents(resolveShow(c.show));
   setZones(c.zones||[]);
@@ -3250,6 +3356,7 @@ initPlaces(); schedulePlaces();
 if(typeof loadLive==='function') loadLive();
 loadNarr();
 loadGray();
+loadCollectStatus();
 /* safety net: if the overlay is hidden for any reason, nothing stays dimmed or inert */
 setInterval(()=>{
   if($('intro').classList.contains('gone') && document.body.classList.contains('pre'))
