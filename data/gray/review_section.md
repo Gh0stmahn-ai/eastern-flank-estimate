@@ -9,3 +9,5 @@ Tick reports that are genuinely about a Russian influence operation. Approved re
   [Russia Fabricates Celebrity Attacks on Democrats as Midterms Approach](https://www.newsguardrealitycheck.com/p/russia-fabricates-celebrity-attacks)
 - [ ] `r0df1ff5f5` **NewsGuard** (C) · 2026-10-01  
   [Partisan Pink Slime Network Weaponizes TikTok](https://www.newsguardrealitycheck.com/p/partisan-pink-slime-network-weaponizes)
+- [ ] `raca308a67` **EUvsDisinfo** (B) · 2026-10-05  
+  [Bucha denial at UNGA and Nazi narratives justifying strikes on Ukraine](https://euvsdisinfo.eu/bucha-denial-at-unga-and-nazi-narratives-justifying-strikes-on-ukraine/)
