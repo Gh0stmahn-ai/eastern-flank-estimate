@@ -53,9 +53,18 @@
    "cbr_date": "2026-10-03",
    "key_rate": 14.0,
    "key_rate_date": "2026-10-02"
+  },
+  {
+   "date": "2026-10-05",
+   "USD": 83.4839,
+   "EUR": 94.3201,
+   "CNY": 12.4328,
+   "cbr_date": "2026-10-03"
   }
  ],
  "source": "Central Bank of Russia",
- "errors": [],
- "updated_utc": "2026-10-04T11:11:37+00:00"
+ "errors": [
+  "key rate: https://www.cbr.ru/eng/hd_base/KeyRate/: HTTP 403"
+ ],
+ "updated_utc": "2026-10-05T12:26:36+00:00"
 }
