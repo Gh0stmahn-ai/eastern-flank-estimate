@@ -1,8 +1,6 @@
 {
- "last_collect_utc": "2026-10-10T21:42:53+00:00",
- "added": 38,
- "errors": [
-  "mfa_ru: https://mid.ru/ru/foreign_policy/news/?PAGEN_1=2: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
- ],
- "error_count": 1
+ "last_collect_utc": "2026-10-11T05:44:45+00:00",
+ "added": 29,
+ "errors": [],
+ "error_count": 0
 }
