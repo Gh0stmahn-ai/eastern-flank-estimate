@@ -11,3 +11,5 @@ Tick reports that are genuinely about a Russian influence operation. Approved re
   [Partisan Pink Slime Network Weaponizes TikTok](https://www.newsguardrealitycheck.com/p/partisan-pink-slime-network-weaponizes)
 - [ ] `raca308a67` **EUvsDisinfo** (B) · 2026-10-05  
   [Bucha denial at UNGA and Nazi narratives justifying strikes on Ukraine](https://euvsdisinfo.eu/bucha-denial-at-unga-and-nazi-narratives-justifying-strikes-on-ukraine/)
+- [ ] `raa3b179f5` **EUvsDisinfo** (B) · 2026-10-09  
+  [How to justify crimes against humanity: the Kremlin method](https://euvsdisinfo.eu/how-to-justify-crimes-against-humanity-the-kremlin-method/)
