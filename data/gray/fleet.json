@@ -83,9 +83,30 @@
      1
     ]
    ]
+  },
+  {
+   "date": "2026-10-19",
+   "listed_by": {
+    "EU": 740,
+    "UK": 683,
+    "US": 1559,
+    "Canada": 731,
+    "Switzerland": 666
+   },
+   "ua_shadow_list": 896,
+   "eu_top_flags": [
+    [
+     "UNKNOWN",
+     739
+    ],
+    [
+     "CM",
+     1
+    ]
+   ]
   }
  ],
  "source": "OpenSanctions maritime collection (CC BY-NC 4.0)",
  "url": "https://www.opensanctions.org/datasets/maritime/",
- "updated_utc": "2026-10-12T14:55:19+00:00"
+ "updated_utc": "2026-10-19T12:45:14+00:00"
 }

@@ -27,9 +27,23 @@
    "spg": 1057,
    "aircraft": 196,
    "helicopters": 183
+  },
+  {
+   "date": "2026-10-19",
+   "total": 24192,
+   "destroyed": 19155,
+   "damaged": 1002,
+   "abandoned": 1194,
+   "captured": 2841,
+   "tanks": 4453,
+   "afv": 2430,
+   "ifv": 6492,
+   "spg": 1060,
+   "aircraft": 200,
+   "helicopters": 185
   }
  ],
  "source": "Oryx (visually confirmed losses)",
  "url": "https://www.oryxspioenkop.com/2022/02/attack-on-europe-documenting-equipment.html",
- "updated_utc": "2026-10-02T23:28:39+00:00"
+ "updated_utc": "2026-10-19T12:45:09+00:00"
 }
