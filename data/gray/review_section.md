@@ -13,3 +13,5 @@ Tick reports that are genuinely about a Russian influence operation. Approved re
   [Bucha denial at UNGA and Nazi narratives justifying strikes on Ukraine](https://euvsdisinfo.eu/bucha-denial-at-unga-and-nazi-narratives-justifying-strikes-on-ukraine/)
 - [ ] `raa3b179f5` **EUvsDisinfo** (B) · 2026-10-09  
   [How to justify crimes against humanity: the Kremlin method](https://euvsdisinfo.eu/how-to-justify-crimes-against-humanity-the-kremlin-method/)
+- [ ] `r9d93abec3` **NewsGuard** (C) · 2026-10-31  
+  [What to Know Ahead of the Misinformation Midterms](https://www.newsguardrealitycheck.com/p/what-to-know-ahead-of-the-misinformation)
