@@ -1,6 +1,9 @@
 {
- "last_collect_utc": "2026-11-14T22:22:18+00:00",
- "added": 6,
- "errors": [],
- "error_count": 0
+ "last_collect_utc": "2026-11-15T06:26:57+00:00",
+ "added": 10,
+ "errors": [
+  "kremlin_ru: http://kremlin.ru/events/president/news: HTTP 403",
+  "kremlin_en: http://en.kremlin.ru/events/president/news: HTTP 403"
+ ],
+ "error_count": 2
 }
