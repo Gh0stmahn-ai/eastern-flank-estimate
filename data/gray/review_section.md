@@ -15,3 +15,11 @@ Tick reports that are genuinely about a Russian influence operation. Approved re
   [How to justify crimes against humanity: the Kremlin method](https://euvsdisinfo.eu/how-to-justify-crimes-against-humanity-the-kremlin-method/)
 - [ ] `r9d93abec3` **NewsGuard** (C) · 2026-10-31  
   [What to Know Ahead of the Misinformation Midterms](https://www.newsguardrealitycheck.com/p/what-to-know-ahead-of-the-misinformation)
+- [ ] `rb7f988e45` **NewsGuard** (C) · 2026-11-16  
+  [Quiz: Is That True or Russian Disinformation?](https://www.newsguardrealitycheck.com/p/quiz-is-that-true-or-russian-disinformation)
+- [ ] `rad4e656c5` **NewsGuard** (C) · 2026-11-16  
+  [Is That True or Russian Disinformation?](https://www.newsguardrealitycheck.com/p/is-that-true-or-russian-disinformation)
+- [ ] `rc99a810db` **NewsGuard** (C) · 2026-11-12 · copycop  
+  [Dougan Leak Exposes Concerted Effort to Infect AI](https://www.newsguardrealitycheck.com/p/dougan-leak-exposes-concerted-effort)
+- [ ] `r74ee7a758` **NewsGuard** (C) · 2026-11-10 · copycop  
+  [Russia Propagandist Dougan Laid Bare](https://www.newsguardrealitycheck.com/p/russia-propagandist-dougan-laid-bare)

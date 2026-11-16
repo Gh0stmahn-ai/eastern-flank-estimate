@@ -61,5 +61,12 @@
   "occupied_km2": 117189,
   "delta_km2": 21,
   "contested_km2": 1709
+ },
+ {
+  "run": "2026-11-16",
+  "as_of": "2026-11-15",
+  "occupied_km2": 117217,
+  "delta_km2": 33,
+  "contested_km2": 1704
  }
 ]

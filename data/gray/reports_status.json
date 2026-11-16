@@ -1,5 +1,7 @@
 {
- "updated_utc": "2026-11-09T15:41:45+00:00",
- "errors": [],
- "pending": 6
+ "updated_utc": "2026-11-16T15:13:48+00:00",
+ "errors": [
+  "EUvsDisinfo: https://euvsdisinfo.eu/feed/: HTTP 403"
+ ],
+ "pending": 10
 }

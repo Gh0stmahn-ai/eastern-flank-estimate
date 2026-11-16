@@ -54,5 +54,45 @@
   "title": "What to Know Ahead of the Misinformation Midterms",
   "link": "https://www.newsguardrealitycheck.com/p/what-to-know-ahead-of-the-misinformation",
   "ops": []
+ },
+ {
+  "cid": "rb7f988e45",
+  "publisher": "NewsGuard",
+  "grade": "C",
+  "date": "2026-11-16",
+  "title": "Quiz: Is That True or Russian Disinformation?",
+  "link": "https://www.newsguardrealitycheck.com/p/quiz-is-that-true-or-russian-disinformation",
+  "ops": []
+ },
+ {
+  "cid": "rad4e656c5",
+  "publisher": "NewsGuard",
+  "grade": "C",
+  "date": "2026-11-16",
+  "title": "Is That True or Russian Disinformation?",
+  "link": "https://www.newsguardrealitycheck.com/p/is-that-true-or-russian-disinformation",
+  "ops": []
+ },
+ {
+  "cid": "rc99a810db",
+  "publisher": "NewsGuard",
+  "grade": "C",
+  "date": "2026-11-12",
+  "title": "Dougan Leak Exposes Concerted Effort to Infect AI",
+  "link": "https://www.newsguardrealitycheck.com/p/dougan-leak-exposes-concerted-effort",
+  "ops": [
+   "copycop"
+  ]
+ },
+ {
+  "cid": "r74ee7a758",
+  "publisher": "NewsGuard",
+  "grade": "C",
+  "date": "2026-11-10",
+  "title": "Russia Propagandist Dougan Laid Bare",
+  "link": "https://www.newsguardrealitycheck.com/p/russia-propagandist-dougan-laid-bare",
+  "ops": [
+   "copycop"
+  ]
  }
 ]
