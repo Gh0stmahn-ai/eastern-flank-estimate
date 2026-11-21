@@ -474,9 +474,18 @@
    "cbr_date": "2026-11-20",
    "key_rate": 14.0,
    "key_rate_date": "2026-11-20"
+  },
+  {
+   "date": "2026-11-21",
+   "USD": 82.1911,
+   "EUR": 90.3445,
+   "CNY": 12.2759,
+   "cbr_date": "2026-11-21",
+   "key_rate": 14.0,
+   "key_rate_date": "2026-11-20"
   }
  ],
  "source": "Central Bank of Russia",
  "errors": [],
- "updated_utc": "2026-11-20T14:12:54+00:00"
+ "updated_utc": "2026-11-21T13:37:31+00:00"
 }
