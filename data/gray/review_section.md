@@ -23,3 +23,9 @@ Tick reports that are genuinely about a Russian influence operation. Approved re
   [Dougan Leak Exposes Concerted Effort to Infect AI](https://www.newsguardrealitycheck.com/p/dougan-leak-exposes-concerted-effort)
 - [ ] `r74ee7a758` **NewsGuard** (C) · 2026-11-10 · copycop  
   [Russia Propagandist Dougan Laid Bare](https://www.newsguardrealitycheck.com/p/russia-propagandist-dougan-laid-bare)
+- [ ] `rdf8646e14` **EUvsDisinfo** (B) · 2026-11-20  
+  [‘Russophobia’: a narrative for every occasion](https://euvsdisinfo.eu/russophobia-a-narrative-for-every-occasion/)
+- [ ] `r7a33292ce` **EUvsDisinfo** (B) · 2026-11-13  
+  [Peace on Moscow’s terms: disinformation ahead of the Abu Dhabi talks](https://euvsdisinfo.eu/peace-on-moscows-terms-disinformation-ahead-of-the-abu-dhabi-talks/)
+- [ ] `r182c72c8f` **NewsGuard** (C) · 2026-11-20 · copycop  
+  [Dougan’s Shift to China](https://www.newsguardrealitycheck.com/p/dougans-shift-to-china)

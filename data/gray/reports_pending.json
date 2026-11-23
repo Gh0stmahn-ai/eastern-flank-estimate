@@ -94,5 +94,34 @@
   "ops": [
    "copycop"
   ]
+ },
+ {
+  "cid": "rdf8646e14",
+  "publisher": "EUvsDisinfo",
+  "grade": "B",
+  "date": "2026-11-20",
+  "title": "‘Russophobia’: a narrative for every occasion",
+  "link": "https://euvsdisinfo.eu/russophobia-a-narrative-for-every-occasion/",
+  "ops": []
+ },
+ {
+  "cid": "r7a33292ce",
+  "publisher": "EUvsDisinfo",
+  "grade": "B",
+  "date": "2026-11-13",
+  "title": "Peace on Moscow’s terms: disinformation ahead of the Abu Dhabi talks",
+  "link": "https://euvsdisinfo.eu/peace-on-moscows-terms-disinformation-ahead-of-the-abu-dhabi-talks/",
+  "ops": []
+ },
+ {
+  "cid": "r182c72c8f",
+  "publisher": "NewsGuard",
+  "grade": "C",
+  "date": "2026-11-20",
+  "title": "Dougan’s Shift to China",
+  "link": "https://www.newsguardrealitycheck.com/p/dougans-shift-to-china",
+  "ops": [
+   "copycop"
+  ]
  }
 ]
